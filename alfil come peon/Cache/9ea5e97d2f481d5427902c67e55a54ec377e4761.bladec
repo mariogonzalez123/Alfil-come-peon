@@ -1,0 +1,20 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+<table>
+ <?php for($fila = 0; $fila < BOARD_SIZE; $fila++): ?>
+ <tr>
+ <?php for($columna = 0; $columna < BOARD_SIZE; $columna++): ?>
+ <?php if($fila == $XUsuario && $columna == $YUsuario): ?>
+ <td data-x='<?php echo \htmlentities($fila, ENT_QUOTES, 'UTF-8', false); ?>' data-y='<?php echo \htmlentities($columna, ENT_QUOTES, 'UTF-8', false); ?>' id='<?php echo \htmlentities($fila . $columna, ENT_QUOTES, 'UTF-8', false); ?>'>*</td>
+ <?php elseif($fila == $XCpu && $columna == $YCpu): ?>
+ <td data-x='<?php echo \htmlentities($fila, ENT_QUOTES, 'UTF-8', false); ?>' data-y='<?php echo \htmlentities($columna, ENT_QUOTES, 'UTF-8', false); ?>' id='<?php echo \htmlentities($fila . $columna, ENT_QUOTES, 'UTF-8', false); ?>'>+</td>
+ <?php else: ?>
+ <td data-x='<?php echo \htmlentities($fila, ENT_QUOTES, 'UTF-8', false); ?>' data-y='<?php echo \htmlentities($columna, ENT_QUOTES, 'UTF-8', false); ?>' id='<?php echo \htmlentities($fila . $columna, ENT_QUOTES, 'UTF-8', false); ?>'></td>
+ <?php endif; ?>
+ <?php endfor; ?>
+ </tr>
+ <?php endfor; ?>
+</table>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('master'); } ?>
